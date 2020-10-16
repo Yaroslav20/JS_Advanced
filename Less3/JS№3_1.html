@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id='timer'>Отсчет</p>
+	<button onclick="Start()">Старт</button>
+	<button onclick="Stop()">Стоп</button>
+	<button onclick="Restart()">Рестарт</button>
+
+	<script type="text/javascript">
+		var myVar;
+		var time = 0;
+		function Start(){
+			myVar = setInterval(Clock, 1000);
+		}
+		function Clock(){
+			if(time != 30){
+				time++;
+			} else {
+				Stop();
+			}
+			document.getElementById("timer").innerHTML = 'Отсчет ' + time;
+		}
+		function Stop(){
+			clearInterval(myVar);
+		}
+		function Restart(){
+			time = 0;
+			clearInterval(myVar);
+			Start();
+		}
+	</script>
+</body>
+</html>

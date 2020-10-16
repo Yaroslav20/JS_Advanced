@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .element {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+
+    input {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 80px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="element"></div>
+    <input type="button" value="Stop">
+
+    <script>
+    	var element = document.querySelector(".element");
+        var button = document.querySelector("input");
+        var finalPosition = document.documentElement.clientWidth - element.clientWidth;
+        var timer;
+
+        element.addEventListener("click", moveElement);
+        button.addEventListener("click", stopElement);
+
+        function moveElement() {
+
+        timer = setInterval(setPosition, 5);
+
+        function setPosition() {
+            var elementPosition = element.getBoundingClientRect().left;
+
+            if (elementPosition < finalPosition) {
+                element.style.left = elementPosition + 1 + "px";
+            } else {
+                element.style.left = "0px";
+            }
+        }
+    };
+    function stopElement() {
+                var stopPosition = element.getBoundingClientRect().left;
+            element.style.left = stopPosition + "px";
+        clearInterval(timer)
+    };
+
+    </script>
+</body>
+
+</html>

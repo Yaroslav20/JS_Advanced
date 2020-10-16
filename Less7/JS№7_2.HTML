@@ -1,0 +1,45 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+
+        function +() {
+            this.walk = function () {
+                document.write("Мужчина Ходит<br/>");
+            };
+            this.Eat = function () {
+                document.write("Мужчина Ест<br/>");
+            };
+            this.Drink = function () {
+                document.write("Мужчина Пьёт<br/>");
+            };
+        };
+        
+        function Doctor() {
+            this.Cure = function () {
+                document.write("Доктор Лечит<br/>");
+            };
+        };
+
+        function Solder(name, walkSpeed) {
+            this.Shoot = function () {
+                document.write("Солдат стреляет<br/>");
+            };
+        };
+
+        Doctor.prototype = new Man();
+        Solder.prototype = new Man();
+
+        var doctor = new Doctor();
+        var solder = new Solder();
+
+        doctor.Cure();
+        solder.Shoot();
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            display: inline-block;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script src="script.js">
+        var element = document.querySelector("div");
+
+        element.addEventListener("mousedown", dragElement);
+
+        function dragElement(event) {
+        var shiftX = event.clientX - element.getBoundingClientRect().left;
+        var shiftY = event.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener("mousemove", moveElement);
+        element.addEventListener("mouseup", dropElement);
+
+        function moveElement(event) {
+            element.style.left = event.pageX - shiftX + "px";
+            element.style.top = event.pageY - shiftY + "px";
+        };
+        function dropElement(event) {
+            document.removeEventListener("mousemove", moveElement);
+        };
+    </script>
+</body>
+
+</html>
